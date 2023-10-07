@@ -98,6 +98,9 @@ return packer.startup(function(use)
 	-- Wakatime
 	use("wakatime/vim-wakatime")
 
+  -- Tmux integration
+  use("christoomey/vim-tmux-navigator")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 
