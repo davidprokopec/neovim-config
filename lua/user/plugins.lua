@@ -101,6 +101,12 @@ return packer.startup(function(use)
   -- Tmux integration
   use("christoomey/vim-tmux-navigator")
 
+  -- Treesiter context
+  use("nvim-treesitter/nvim-treesitter-context")
+
+  -- Zig language support
+  use("ziglang/zig.vim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 
