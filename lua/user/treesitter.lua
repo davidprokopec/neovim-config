@@ -1,29 +1,25 @@
-local M = {
-}
-function M.config()
-  local treesitter = require "nvim-treesitter"
-  local configs = require "nvim-treesitter.configs"
+require 'nvim-treesitter.configs'.setup(
+  {
+    ensure_installed = { "vimdoc", "javascript", "typescript", "c", "lua" },
 
-  configs.setup {
-    ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python" }, -- put the language you want in this array
-    -- ensure_installed = "all", -- one of "all" or a list of languages
-    ignore_install = { "" },                                                       -- List of parsers to ignore installing
-    sync_install = false,                                                          -- install languages synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+
+    auto_install = true,
 
     highlight = {
-      enable = true,       -- false will disable the whole extension
-      disable = { "css" }, -- list of language that will be disabled
+      enable = true,
     },
+
     autopairs = {
       enable = true,
     },
-    indent = { enable = true, disable = { "python", "css" } },
 
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
+    context = {
+        enable = true, -- Enable the plugin
+        throttle = true, -- Throttle updates to reduce lag
     },
-  }
-end
 
-return M
+    indent = { enable = true, disable = { "python", "css" } },
+  }
+)
+
