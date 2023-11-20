@@ -66,7 +66,7 @@ return packer.startup(function(use)
 
   use {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
+    branch = 'v3.x',
     requires = {
       -- LSP Support
       { 'neovim/nvim-lspconfig' },
@@ -85,6 +85,9 @@ return packer.startup(function(use)
       -- Snippets
       { 'L3MON4D3/LuaSnip' },
       { 'rafamadriz/friendly-snippets' },
+
+      -- Formating
+      { 'mhartington/formatter.nvim' }
     }
   }
 
