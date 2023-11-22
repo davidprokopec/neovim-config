@@ -141,6 +141,7 @@ local mappings = {
     },
     -- f = { '<cmd>lua vim.lsp.buf.format{async=true, singlequote=true}<cr>', 'Format' },
     f = { '<cmd>Format<cr>', 'Format' },
+    -- f = { '<cmd>lua require 'conform'.format()<cr>', 'Format' },
     i = { '<cmd>LspInfo<cr>', 'Info' },
     j = {
       '<cmd>lua vim.diagnostic.goto_next()<CR>',

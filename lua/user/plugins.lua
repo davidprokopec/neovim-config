@@ -87,7 +87,7 @@ return packer.startup(function(use)
       { 'rafamadriz/friendly-snippets' },
 
       -- Formating
-      { 'mhartington/formatter.nvim' }
+      {'stevearc/conform.nvim'}
     }
   }
 
