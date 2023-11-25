@@ -107,7 +107,8 @@ local mappings = {
 
   g = {
     name = 'Git',
-    g = { '<cmd>lua _LAZYGIT_TOGGLE()<CR>', 'Lazygit' },
+    -- g = { '<cmd>lua _LAZYGIT_TOGGLE()<CR>', 'Lazygit' },
+    g = { ':!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>', 'Lazygit' },
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", 'Next Hunk' },
     k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", 'Prev Hunk' },
     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", 'Blame' },
@@ -139,9 +140,7 @@ local mappings = {
       '<cmd>Telescope diagnostics<cr>',
       'Workspace Diagnostics',
     },
-    -- f = { '<cmd>lua vim.lsp.buf.format{async=true, singlequote=true}<cr>', 'Format' },
     f = { '<cmd>Format<cr>', 'Format' },
-    -- f = { '<cmd>lua require 'conform'.format()<cr>', 'Format' },
     i = { '<cmd>LspInfo<cr>', 'Info' },
     j = {
       '<cmd>lua vim.diagnostic.goto_next()<CR>',
