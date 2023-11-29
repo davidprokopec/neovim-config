@@ -54,8 +54,8 @@ require("mason-lspconfig").setup({
     end,
     clangd = function()
       local clangd_opts = {
-        options = {
-          offset_encoding = "utf-8",
+        capabilities = {
+          offsetEncoding = "utf-8",
         },
       }
       require("lspconfig").clangd.setup(clangd_opts)
