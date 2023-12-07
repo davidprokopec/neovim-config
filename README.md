@@ -5,7 +5,7 @@
 
 ## Recommended
 * [ripgrep](https://github.com/BurntSushi/ripgrep) - for ignoring .gitignore files in fuzzy search
-* [tmux](https://github.com/tmux/tmux) - better terminal window management
+* [tmux](https://github.com/tmux/tmux) - better terminal window management -- [my config](https://github.com/davidprokopec/tmux-config)
 
 
 ## How to install
