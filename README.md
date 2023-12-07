@@ -16,4 +16,5 @@ git clone https://github.com/davidprokopec/neovim-config.git ~/.config/nvim
 Open neovim, let everything install and then reopen
 
 Install additional LSPs using `:Mason`
+
 Change required LSPs in user/lsp/init `ensure_installed`
