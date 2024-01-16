@@ -60,7 +60,6 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use({ "folke/tokyonight.nvim" })
-  use({ "lunarvim/darkplus.nvim" })
 
   use({
     "VonHeikemen/lsp-zero.nvim",

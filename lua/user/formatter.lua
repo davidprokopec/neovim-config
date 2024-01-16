@@ -1,18 +1,17 @@
 local conform = require("conform")
 
 local opts = {
-  formatters = {
-  },
+  formatters = {},
   -- The default formatter can be specified here
   formatters_by_ft = {
     lua = { "stylua" },
     -- Conform will run multiple formatters sequentially
     python = { "isort", "black" },
     -- Use a sub-list to run only the first available formatter
-    javascript = { { "biome", "prettierd" } },
-    typescript = { { "biome", "prettierd" } },
-    javascriptreact = { { "biome", "prettierd" } },
-    typescriptreact = { { "biome", "prettierd" } },
+    javascript = { { "prettierd", "biome" } },
+    typescript = { { "prettierd", "biome" } },
+    javascriptreact = { { "prettierd", "biome" } },
+    typescriptreact = { { "prettierd", "biome" } },
   },
 }
 
