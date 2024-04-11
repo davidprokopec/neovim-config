@@ -11,7 +11,7 @@
 ## How to install
 Clone the repo to ~/.config/nvim
 ```
-git clone https://github.com/davidprokopec/neovim-config.git ~/.config/nvim
+git clone git@github.com:davidprokopec/neovim-config.git ~/.config/nvim
 ```
 Open neovim, let everything install and then reopen
 
