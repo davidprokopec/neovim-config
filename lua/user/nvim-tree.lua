@@ -43,7 +43,7 @@ local options = {
     },
   },
   view = {
-    width = 30,
+    width = 45,
     side = "right",
   },
 }
