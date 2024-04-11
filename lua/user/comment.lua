@@ -31,3 +31,5 @@ comment.setup {
   end,
 }
 
+
+require("todo-comments").setup{}

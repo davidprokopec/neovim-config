@@ -1,6 +1,6 @@
 require 'nvim-treesitter.configs'.setup(
   {
-    ensure_installed = { "vimdoc", "javascript", "typescript", "c", "lua" },
+    ensure_installed = { 'vimdoc', 'javascript', 'typescript', 'c', 'lua' },
 
     sync_install = false,
 
@@ -15,11 +15,12 @@ require 'nvim-treesitter.configs'.setup(
     },
 
     context = {
-        enable = true, -- Enable the plugin
-        throttle = true, -- Throttle updates to reduce lag
+      enable = true,     -- Enable the plugin
+      throttle = true,   -- Throttle updates to reduce lag
     },
 
-    indent = { enable = true, disable = { "python", "css" } },
+    indent = { enable = true, disable = { 'python', 'css' } },
+
+    additional_vim_regex_highlighting = false
   }
 )
-
