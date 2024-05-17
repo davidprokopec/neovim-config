@@ -50,7 +50,7 @@ require("mason-lspconfig").setup({
     lsp_zero.default_setup,
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
-      require("lspconfig").lua_ls.setup(lua_opts)
+      lspconfig.lua_ls.setup(lua_opts)
     end,
     clangd = function()
       local clangd_opts = {
@@ -58,7 +58,7 @@ require("mason-lspconfig").setup({
           offsetEncoding = "utf-8",
         },
       }
-      require("lspconfig").clangd.setup(clangd_opts)
+      lspconfig.clangd.setup(clangd_opts)
     end,
   },
 })

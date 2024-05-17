@@ -12,6 +12,7 @@ local opts = {
     typescript = { { "prettierd", "biome" } },
     javascriptreact = { { "prettierd", "biome" } },
     typescriptreact = { { "prettierd", "biome" } },
+    svelte = { { "prettierd", "biome" } },
   },
 }
 
