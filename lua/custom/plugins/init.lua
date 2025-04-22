@@ -1,5 +1,21 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
+-- Treesiter context
 --
--- See the kickstart.nvim README for more information
-return {}
+return {
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+  },
+  {
+    "moll/vim-bbye",
+  },
+  {
+    "wakatime/vim-wakatime",
+    lazy = false,
+  },
+  {
+    "ellisonleao/dotenv.nvim",
+  },
+  {
+    "sindrets/diffview.nvim"
+  }
+
+}
