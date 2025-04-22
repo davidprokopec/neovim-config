@@ -1,12 +1,23 @@
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = { "*.ts", "*.tsx", "*.js", "*.jsx", "*.mjs", "*.cjs" },
+--   callback = function()
+--     vim.cmd("EslintFixAll")
+--   end,
+-- })
+
 return {
 
   { -- Linting
-    'mfussenegger/nvim-lint',
-    event = { 'BufReadPre', 'BufNewFile' },
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
-      local lint = require 'lint'
+      local lint = require("lint")
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
+        markdown = { "markdownlint" },
+        javascript = { "eslint" },
+        javascriptreact = { "eslint" },
+        typescript = { "eslint" },
+        typescriptreact = { "eslint" },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -43,18 +54,17 @@ return {
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
-      local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
-      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
-        group = lint_augroup,
-        callback = function()
-          -- Only run the linter in buffers that you can modify in order to
-          -- avoid superfluous noise, notably within the handy LSP pop-ups that
-          -- describe the hovered symbol using Markdown.
-          if vim.opt_local.modifiable:get() then
-            lint.try_lint()
-          end
-        end,
-      })
+      -- local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+      -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+      --   group = lint_augroup,
+      --   callback = function()
+      --     lint.try_lint()
+      --   end,
+      -- })
+
+      vim.keymap.set("n", "<leader>ll", function()
+        lint.try_lint()
+      end, { desc = "Trigger linting for current file" })
     end,
   },
 }
