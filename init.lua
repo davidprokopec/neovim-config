@@ -114,9 +114,9 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+-- vim.schedule(function()
+--   vim.opt.clipboard = 'unnamedplus'
+-- end)
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -171,6 +171,15 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+vim.keymap.set('n', '<A-J>', '<cmd>cnext<CR>')
+vim.keymap.set('n', '<A-K>', '<cmd>cprev<CR>')
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -401,7 +410,7 @@ require('lazy').setup({
         { '<leader>d_', hidden = true },
         { '<leader>h', group = 'Git [H]unk' },
         { '<leader>h_', hidden = true },
-        { '<leader>q', ':q!<CR>', desc = '[q]quit' },
+        { '<leader>Q', ':q!<CR>', desc = '[q]quit' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>r_', hidden = true },
         { '<leader>s', group = '[S]earch' },
@@ -743,8 +752,9 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
         --
+        jdtls = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -815,20 +825,20 @@ require('lazy').setup({
     },
     opts = {
       notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        if disable_filetypes[vim.bo[bufnr].filetype] then
-          return nil
-        else
-          return {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
-          }
-        end
-      end,
+      -- format_on_save = function(bufnr)
+      --   -- Disable "format_on_save lsp_fallback" for languages that don't
+      --   -- have a well standardized coding style. You can add additional
+      --   -- languages here or re-enable it for the disabled ones.
+      --   local disable_filetypes = { c = true, cpp = true }
+      --   if disable_filetypes[vim.bo[bufnr].filetype] then
+      --     return nil
+      --   else
+      --     return {
+      --       timeout_ms = 500,
+      --       lsp_format = 'fallback',
+      --     }
+      --   end
+      -- end,
       formatters_by_ft = {
         lua = { 'stylua' },
         javascript = { 'prettier' },
@@ -836,6 +846,7 @@ require('lazy').setup({
         javascriptreact = { 'prettier' },
         typescriptreact = { 'prettier' },
         json = { 'prettier' },
+        java = { 'jdtls' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -906,7 +917,7 @@ require('lazy').setup({
         preset = 'default',
 
         ['<C-j>'] = { 'select_next', 'fallback' },
-        ['<C-k'] = { 'select_prev', 'fallback' },
+        ['<C-k>'] = { 'select_prev', 'fallback' },
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -922,12 +933,26 @@ require('lazy').setup({
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        menu = {
+          draw = {
+            columns = {
+              { 'kind_icon', 'label', 'label_description', gap = 1 },
+              { 'kind', 'source_name', gap = 1 },
+            },
+          },
+        },
       },
 
       sources = {
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          opencode = {
+            module = 'opencode.cmp.blink',
+          },
+        },
+        per_filetype = {
+          opencode_ask = { 'opencode', 'buffer' },
         },
       },
 
