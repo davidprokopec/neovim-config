@@ -1,5 +1,9 @@
 -- Treesiter context
 --
+-- See the kickstart.nvim README for more information
+
+---@module 'lazy'
+---@type LazySpec
 return {
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -17,5 +21,4 @@ return {
   {
     "sindrets/diffview.nvim"
   }
-
 }
